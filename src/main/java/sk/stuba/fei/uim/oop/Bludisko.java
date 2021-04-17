@@ -96,7 +96,9 @@ public class Bludisko {
     }
 
     public void generujBludisko(){
-        int index, nahodnySused;
+        Random rand= new Random();
+        int index;
+        Policko nahodnySused;
         ArrayList<Integer> vsetciSusedia;
         boolean[] navstivene= new boolean[rozmer*rozmer];
         Arrays.fill(navstivene, false);
@@ -105,17 +107,24 @@ public class Bludisko {
         Stack<Policko> stack= new Stack<Policko>();
         stack.push(vybrane);
 
-        Policko v= vyberSuseda(vybrane.getZoznamSusedov(), new Random(), navstivene);
-        System.out.println("-----");
-
- /*       while (!stack.empty()){
+        while (!stack.empty()){
             index= vybrane.getPoradie();
             navstivene[index]= true;
 
             vsetciSusedia= vybrane.getZoznamSusedov();
+            nahodnySused= vyberSuseda(vsetciSusedia, rand, navstivene);
 
-        }*/
-
+            if(nahodnySused != null){
+                vybrane.pridajSpojenie(nahodnySused);
+                nahodnySused.pridajSpojenie(vybrane);
+                vybrane= nahodnySused;
+                stack.push(vybrane);
+            }
+            else{
+                vybrane= stack.peek();
+                stack.pop();
+            }
+        }
     }
 
     public Bludisko(int n){

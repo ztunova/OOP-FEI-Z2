@@ -16,6 +16,10 @@ public class Policko {
     ArrayList<Policko> spojenie;
     ArrayList<Integer> zoznamSusedov;
 
+    public void pridajSpojenie(Policko spoj){
+        this.spojenie.add(spoj);
+    }
+
     public void setZoznamSusedov(ArrayList<Integer> zoznamSusedov) {
         this.zoznamSusedov.addAll(zoznamSusedov);
     }
