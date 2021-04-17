@@ -10,24 +10,26 @@ import java.util.ArrayList;
 @Setter
 @Getter
 public class Policko {
+    private int poradie;
     private int riadok;
     private int stlpec;
-    //ArrayList<Policko> zoznamSusedov;
+    ArrayList<Policko> spojenie;
     ArrayList<Integer> zoznamSusedov;
 
     public void setZoznamSusedov(ArrayList<Integer> zoznamSusedov) {
         this.zoznamSusedov.addAll(zoznamSusedov);
     }
 
-    public Policko(int riadok, int stlpec){
+    public Policko(int poradie, int riadok, int stlpec){
+        this.poradie= poradie;
         this.riadok= riadok;
         this.stlpec= stlpec;
-        //this.zoznamSusedov= new ArrayList<Policko>();
+        this.spojenie= new ArrayList<Policko>();
         this.zoznamSusedov= new ArrayList<Integer>();
     }
 
     public Policko(){
-        //this.zoznamSusedov= new ArrayList<Policko>();
+        this.spojenie= new ArrayList<Policko>();
         this.zoznamSusedov= new ArrayList<Integer>();
     }
 

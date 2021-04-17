@@ -7,70 +7,9 @@ import java.util.ArrayList;
 public class Assignment2 {
     public static void main(String[] args) {
 
-        int n= 3;
-        int pocitadlo= 0;
-        ArrayList<Policko> mapa= new ArrayList<Policko>(n*n);
-        ArrayList<Integer> susedia= new ArrayList<Integer>();
-
-        for (int riadok= 0; riadok< n; riadok++){
-            for (int stlpec= 0; stlpec< n; stlpec++){
-                susedia.clear();
-                Policko novePolicko= new Policko(riadok, stlpec);
-                //pocitadlo++;
-                mapa.add(novePolicko);
-
-                if(riadok == 0){
-                    if (stlpec == 0) {
-                        susedia.add(pocitadlo + 1);
-                        susedia.add(pocitadlo + n);
-                    }
-                    else if (stlpec == n-1){
-                        susedia.add(pocitadlo-1);
-                        susedia.add(pocitadlo+n);
-                    }
-                    else{
-                        susedia.add(pocitadlo-1);
-                        susedia.add(pocitadlo + 1);
-                        susedia.add(pocitadlo+n);
-                    }
-                }
-                else if(riadok == n-1){
-                    if (stlpec == 0) {
-                        susedia.add(pocitadlo + 1);
-                        susedia.add(pocitadlo - n);
-                    }
-                    else if (stlpec == n-1){
-                        susedia.add(pocitadlo -1);
-                        susedia.add(pocitadlo -n);
-                    }
-                    else{
-                        susedia.add(pocitadlo-1);
-                        susedia.add(pocitadlo + 1);
-                        susedia.add(pocitadlo -n);
-                    }
-                }
-                else{
-                    if (stlpec == 0) {
-                        susedia.add(pocitadlo -n);
-                        susedia.add(pocitadlo + 1);
-                        susedia.add(pocitadlo + n);
-                    }
-                    else if (stlpec == n-1){
-                        susedia.add(pocitadlo -n);
-                        susedia.add(pocitadlo -1);
-                        susedia.add(pocitadlo +n);
-                    }
-                    else{
-                        susedia.add(pocitadlo -n);
-                        susedia.add(pocitadlo -1);
-                        susedia.add(pocitadlo + 1);
-                        susedia.add(pocitadlo +n);
-                    }
-                }
-                novePolicko.setZoznamSusedov(susedia);
-                pocitadlo++;
-            }
-        }
+        Bludisko bludisko= new Bludisko(3);
+        bludisko.initBludisko();
+        bludisko.generujBludisko();
 
         System.out.println("-----");
 
