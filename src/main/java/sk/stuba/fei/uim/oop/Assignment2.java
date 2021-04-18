@@ -1,20 +1,18 @@
 package sk.stuba.fei.uim.oop;
 
-import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
-
 public class Assignment2 {
     public static void main(String[] args) {
 
         Bludisko bludisko= new Bludisko(3);
-        bludisko.initBludisko();
+       // bludisko.initBludisko();
+       // bludisko.randomDFS();
+
         bludisko.generujBludisko();
 
         System.out.println("-----");
 
-        /*JFrame f= new JFrame();
-        f.setSize(300, 300);
+        //JFrame f= new JFrame();
+       /* f.setSize(300, 300);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Pokus2 p2= new Pokus2();

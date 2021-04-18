@@ -95,7 +95,7 @@ public class Bludisko {
         }
     }
 
-    public void generujBludisko(){
+    public void randomDFS(){
         Random rand= new Random();
         int index;
         Policko nahodnySused;
@@ -124,6 +124,15 @@ public class Bludisko {
                 vybrane= stack.peek();
                 stack.pop();
             }
+        }
+    }
+
+    public void generujBludisko(){
+        initBludisko();
+        randomDFS();
+        for (Policko policko : this.mapa){
+            System.out.println(policko.getPoradie());
+            policko.urciHrany();
         }
     }
 
