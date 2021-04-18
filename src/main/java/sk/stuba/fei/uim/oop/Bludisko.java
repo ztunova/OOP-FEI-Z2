@@ -1,10 +1,34 @@
 package sk.stuba.fei.uim.oop;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.*;
 
-public class Bludisko {
+public class Bludisko extends JPanel {
     private int rozmer;
-    private ArrayList<Policko> mapa;
+    public ArrayList<Policko> mapa;
+
+    public void paint(Graphics g){
+        boolean[] hrany;
+        int riadok, stlpec;
+        for(Policko pol: this.mapa) {
+            hrany= pol.getHrany();
+            riadok= pol.getRiadok();
+            stlpec= pol.getStlpec();
+            if (hrany[0]) {
+                g.drawLine(stlpec * 30 + 5, riadok * 30 + 5, stlpec * 30 + 30 + 5, riadok * 30 + 5);
+            }
+            if (hrany[1]) {
+                g.drawLine(stlpec * 30 + 5, riadok * 30 + 30 + 5, stlpec * 30 + 30 + 5, riadok * 30 + 30 + 5);
+            }
+            if (hrany[2]) {
+                g.drawLine(stlpec * 30 + 30 + 5, riadok* 30 + 5, stlpec * 30 + 30 + 5, riadok * 30 + 30 + 5);
+            }
+            if (hrany[3]) {
+                g.drawLine(stlpec * 30 + 5, riadok * 30 + 5, stlpec * 30 + 5, riadok * 30 + 30 + 5);
+            }
+        }
+    }
 
     public void initBludisko(){
         int pocitadlo= 0;
@@ -131,7 +155,7 @@ public class Bludisko {
         initBludisko();
         randomDFS();
         for (Policko policko : this.mapa){
-            System.out.println(policko.getPoradie());
+            //System.out.println(policko.getPoradie());
             policko.urciHrany();
         }
     }

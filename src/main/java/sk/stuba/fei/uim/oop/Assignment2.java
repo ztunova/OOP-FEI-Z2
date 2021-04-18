@@ -1,22 +1,31 @@
 package sk.stuba.fei.uim.oop;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class Assignment2 {
     public static void main(String[] args) {
 
-        Bludisko bludisko= new Bludisko(3);
-       // bludisko.initBludisko();
-       // bludisko.randomDFS();
+        JFrame f= new JFrame();
+        f.setSize(500, 500);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        bludisko.generujBludisko();
+        //f.add(new Pokus2());
+
+        Bludisko b= new Bludisko(13);
+        b.generujBludisko();
+       // b.vykresliBludisko(f);
+
+        f.add(b);
 
         System.out.println("-----");
 
-        //JFrame f= new JFrame();
-       /* f.setSize(300, 300);
+        /*JFrame f= new JFrame();
+        f.setSize(300, 300);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Pokus2 p2= new Pokus2();
-        p2.setSize(101, 101);
+        //p2.setSize(101, 101);
         f.add(p2);*/
 
         /*JPanel p= new JPanel();
@@ -52,7 +61,7 @@ public class Assignment2 {
 
         //f.add(new JLabel("B"));*/
 
-        //f.setVisible(true);
+        f.setVisible(true);
         
     }
 }

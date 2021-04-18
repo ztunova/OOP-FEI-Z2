@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 @Setter
 @Getter
-public class Policko {
+public class Policko{
     private int poradie;
     private int riadok;
     private int stlpec;
