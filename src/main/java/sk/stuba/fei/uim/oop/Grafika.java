@@ -22,6 +22,16 @@ public class Grafika extends JPanel {
         boolean[] hrany;
         int riadok, stlpec;
         g.setColor(Color.BLACK);
+
+        /*if(aktPoziciaVeze == ciel){
+            this.bludisko= new Bludisko(14);
+            bludisko.generujBludisko();
+            this.start= bludisko.getMapa().get(0);
+            this.ciel= bludisko.getMapa().get(14*14-1);
+            this.aktPoziciaVeze= start;
+            this.predchadzajucaPoziciaVeze= aktPoziciaVeze;
+        }*/
+
         for(Policko pol: mapa) {
             hrany= pol.getHrany();
             riadok= pol.getRiadok();

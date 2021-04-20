@@ -14,6 +14,9 @@ public class Reset extends Button{
         g= new Grafika();
         g.setLayout(null);
         g.setSize(500, 500);
+        okno.setFocusable(true);
+
+        okno.addKeyListener(new PohybKlavesnicou(this.g));
 
         JPanel p= new JPanel();
         p.setBackground(Color.cyan);
@@ -43,5 +46,6 @@ public class Reset extends Button{
         this.setLocation(50, 100);
         this.setText("Reset");
         this.addActionListener(this);
+        this.setFocusable(false);
     }
 }
