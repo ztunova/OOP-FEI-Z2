@@ -51,6 +51,7 @@ public class Hra /*implements ActionListener */{
         p.add(new Dole(g));
         p.add(new Vlavo(g));
         p.add(new Hore(g));
+        p.add(new Reset(g, okno));
 
         //p.add(pokus2);
         okno.add(p);
