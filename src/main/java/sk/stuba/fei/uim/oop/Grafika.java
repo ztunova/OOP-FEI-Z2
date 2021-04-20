@@ -17,20 +17,32 @@ public class Grafika extends JPanel {
     private Policko predchadzajucaPoziciaVeze;
 
     public void paint(Graphics g){
-        //this.setBackground(Color.WHITE);
-        ArrayList<Policko> mapa= bludisko.getMapa();
-        boolean[] hrany;
-        int riadok, stlpec;
-        g.setColor(Color.BLACK);
+        //vykresliBludisko(g);
 
-        /*if(aktPoziciaVeze == ciel){
+        if(aktPoziciaVeze == ciel){
+            System.out.println("Ciel");
+            g.setColor(Color.WHITE);
+            g.fillRect(0,0, 500, 500);
+            this.bludisko= null;
             this.bludisko= new Bludisko(14);
             bludisko.generujBludisko();
             this.start= bludisko.getMapa().get(0);
             this.ciel= bludisko.getMapa().get(14*14-1);
             this.aktPoziciaVeze= start;
             this.predchadzajucaPoziciaVeze= aktPoziciaVeze;
-        }*/
+
+            vykresliBludisko(g);
+        }
+        else{
+            vykresliBludisko(g);
+        }
+    }
+
+    private void vykresliBludisko(Graphics g){
+        ArrayList<Policko> mapa= bludisko.getMapa();
+        boolean[] hrany;
+        int riadok, stlpec;
+        g.setColor(Color.BLACK);
 
         for(Policko pol: mapa) {
             hrany= pol.getHrany();
