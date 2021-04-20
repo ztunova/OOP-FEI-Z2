@@ -1,16 +1,24 @@
 package sk.stuba.fei.uim.oop;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
-public class Bludisko extends JPanel {
+@Setter
+@Getter
+public class Bludisko /*extends JPanel*/ {
     private int rozmer;
     public ArrayList<Policko> mapa;
+    private Policko start;
+    private Policko ciel;
 
-    public void paint(Graphics g){
+   /* public void paint(Graphics g){
         boolean[] hrany;
         int riadok, stlpec;
+        g.setColor(Color.BLACK);
         for(Policko pol: this.mapa) {
             hrany= pol.getHrany();
             riadok= pol.getRiadok();
@@ -28,7 +36,15 @@ public class Bludisko extends JPanel {
                 g.drawLine(stlpec * 30 + 5, riadok * 30 + 5, stlpec * 30 + 5, riadok * 30 + 30 + 5);
             }
         }
-    }
+        stlpec= start.getStlpec();
+        riadok= start.getRiadok();
+        g.setColor(Color.MAGENTA);
+        g.fillRect(stlpec*30+6, riadok*30+6, 29,29);
+        stlpec= ciel.getStlpec();
+        riadok= ciel.getRiadok();
+        g.setColor(Color.GREEN);
+        g.fillRect(stlpec*30+6, riadok*30+6, 29,29);
+    }*/
 
     public void initBludisko(){
         int pocitadlo= 0;
@@ -158,6 +174,11 @@ public class Bludisko extends JPanel {
             //System.out.println(policko.getPoradie());
             policko.urciHrany();
         }
+        this.start= mapa.get(0);
+        Random r= new Random();
+        //nahodne policko v druhej polovici bludiska
+        int indexCiel= r.nextInt(14*14-(14*14)/2)+(14*14)/2;
+        this.ciel= mapa.get(indexCiel);
     }
 
     public Bludisko(int n){

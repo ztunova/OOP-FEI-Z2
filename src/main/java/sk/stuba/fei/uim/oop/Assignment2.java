@@ -6,62 +6,32 @@ import java.awt.*;
 public class Assignment2 {
     public static void main(String[] args) {
 
-        JFrame f= new JFrame();
-        f.setSize(500, 500);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        //f.add(new Pokus2());
-
-        Bludisko b= new Bludisko(13);
-        b.generujBludisko();
-       // b.vykresliBludisko(f);
-
-        f.add(b);
-
-        System.out.println("-----");
+        Hra hra= new Hra();
+       // hra.pokus();
 
         /*JFrame f= new JFrame();
-        f.setSize(300, 300);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setSize(500, 500);
+        f.setLayout(null);
 
-        Pokus2 p2= new Pokus2();
-        //p2.setSize(101, 101);
-        f.add(p2);*/
+        JPanel p1= new JPanel();
+        p1.setBackground(Color.CYAN);
+        p1.setLocation(0,0);
+        p1.setSize(100, 500);
 
-        /*JPanel p= new JPanel();
-        f.add(p);
+        JPanel p2= new JPanel();
+        p2.setBackground(Color.GREEN);
+        p2.setLocation(200,0);
+        p2.setSize(100, 500);
 
-        //p.setLayout(new GridLayout(3,3));
-        p.setLayout(null);
-        p.setSize(150, 150);
-        p.add(new Pokus2());
-        p.add(new Pokus2());*/
+        f.add(p1);
+        f.add(p2);
+        p1.add(new JButton("Panel1"));
+        p2.add(new JLabel("panel2"));
 
-        /*Policko pol = new Policko();
-        pol.setSize(251, 251);
-        p.add(pol);*/
+        f.setVisible(true);*/
 
-        /*for (int i= 0; i< 5; i++) {
-            for (int j= 0; j< 5; j++) {
-                Policko pol = new Policko();
-                p.add(pol);
-                pol.setSize(51, 51);
-                pol.setLocation(i*50, j*50);
-            }
-        }*/
-
-
-        //p.add(new Policko());
-
-        /*JLabel l= new JLabel("X");
-        int i;
-        for (i= 0; i< 9; i++) {
-            p.add(new JLabel(i+"X"));
-        }
-
-        //f.add(new JLabel("B"));*/
-
-        f.setVisible(true);
+        System.out.println("-----");
         
     }
 }
