@@ -30,5 +30,6 @@ public class Vlavo extends Button{
         this.setLocation(50, 200);
         this.setText("Vlavo");
         this.addActionListener(this);
+        this.setFocusable(false);
     }
 }

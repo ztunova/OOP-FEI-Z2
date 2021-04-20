@@ -30,5 +30,6 @@ public class Dole extends Button{
         this.setLocation(50, 250);
         this.setText("Dole");
         this.addActionListener(this);
+        this.setFocusable(false);
     }
 }

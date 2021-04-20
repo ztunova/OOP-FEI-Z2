@@ -17,6 +17,7 @@ public class Grafika extends JPanel {
     private Policko predchadzajucaPoziciaVeze;
 
     public void paint(Graphics g){
+        //this.setBackground(Color.WHITE);
         ArrayList<Policko> mapa= bludisko.getMapa();
         boolean[] hrany;
         int riadok, stlpec;
@@ -63,13 +64,14 @@ public class Grafika extends JPanel {
     }
 
     public Grafika(){
-        this.setBackground(Color.WHITE);
+        //this.setBackground(Color.WHITE);
         this.bludisko= new Bludisko(14);
         bludisko.generujBludisko();
         this.start= bludisko.getMapa().get(0);
         this.ciel= bludisko.getMapa().get(14*14-1);
         this.aktPoziciaVeze= start;
         this.predchadzajucaPoziciaVeze= aktPoziciaVeze;
+        this.setFocusable(true);
     }
 
 }

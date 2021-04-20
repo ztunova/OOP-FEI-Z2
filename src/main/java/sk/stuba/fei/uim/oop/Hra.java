@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class Hra /*implements ActionListener */{
     int vyrisenychBludisk;
@@ -18,22 +20,20 @@ public class Hra /*implements ActionListener */{
     Bludisko bludisko;
     Pokus2 pokus2;
 
-    /*public void pokus(){
-        Policko posunute= g.getBludisko().getMapa().get(1);
-        this.g.setStart(posunute);
-        g.repaint();
-    }*/
-
     public Hra(){
         this.okno = new JFrame();
         okno.setLayout(null);
         okno.setSize(700, 500);
         okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        okno.setFocusable(true);
 
         this.g= new Grafika();
         g.setLayout(null);
         g.setSize(500, 500);
         okno.add(g);
+        g.setFocusable(true);
+
+        okno.addKeyListener(new PohybKlavesnicou(this.g));
 
         JPanel p= new JPanel();
         p.setBackground(Color.cyan);

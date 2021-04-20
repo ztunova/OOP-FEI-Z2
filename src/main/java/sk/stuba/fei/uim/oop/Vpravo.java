@@ -29,5 +29,6 @@ public class Vpravo extends Button{
         this.setLocation(50, 300);
         this.setText("Vpravo");
         this.addActionListener(this);
+        this.setFocusable(false);
     }
 }

@@ -30,5 +30,6 @@ public class Hore extends Button{
         this.setLocation(50, 150);
         this.setText("Hore");
         this.addActionListener(this);
+        this.setFocusable(false);
     }
 }
