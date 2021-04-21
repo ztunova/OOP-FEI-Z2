@@ -41,10 +41,8 @@ public class Hra /*implements ActionListener */{
         p.setSize(200, 500);
         p.setLocation(500, 0);
 
-        p.add(new JLabel("POKUS1"));
-
-        /*this.pokus2= new Pokus2(g);
-        pokus2.addActionListener(pokus2);*/
+        this.pocitadlo= g.getPocitadlo();
+        p.add(pocitadlo);
 
         this.vpravo= new Vpravo(g);
         p.add(vpravo);

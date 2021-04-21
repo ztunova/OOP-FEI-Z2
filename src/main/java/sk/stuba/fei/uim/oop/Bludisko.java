@@ -9,42 +9,11 @@ import java.util.*;
 
 @Setter
 @Getter
-public class Bludisko /*extends JPanel*/ {
+public class Bludisko {
     private int rozmer;
     public ArrayList<Policko> mapa;
     private Policko start;
     private Policko ciel;
-
-   /* public void paint(Graphics g){
-        boolean[] hrany;
-        int riadok, stlpec;
-        g.setColor(Color.BLACK);
-        for(Policko pol: this.mapa) {
-            hrany= pol.getHrany();
-            riadok= pol.getRiadok();
-            stlpec= pol.getStlpec();
-            if (hrany[0]) {
-                g.drawLine(stlpec * 30 + 5, riadok * 30 + 5, stlpec * 30 + 30 + 5, riadok * 30 + 5);
-            }
-            if (hrany[1]) {
-                g.drawLine(stlpec * 30 + 5, riadok * 30 + 30 + 5, stlpec * 30 + 30 + 5, riadok * 30 + 30 + 5);
-            }
-            if (hrany[2]) {
-                g.drawLine(stlpec * 30 + 30 + 5, riadok* 30 + 5, stlpec * 30 + 30 + 5, riadok * 30 + 30 + 5);
-            }
-            if (hrany[3]) {
-                g.drawLine(stlpec * 30 + 5, riadok * 30 + 5, stlpec * 30 + 5, riadok * 30 + 30 + 5);
-            }
-        }
-        stlpec= start.getStlpec();
-        riadok= start.getRiadok();
-        g.setColor(Color.MAGENTA);
-        g.fillRect(stlpec*30+6, riadok*30+6, 29,29);
-        stlpec= ciel.getStlpec();
-        riadok= ciel.getRiadok();
-        g.setColor(Color.GREEN);
-        g.fillRect(stlpec*30+6, riadok*30+6, 29,29);
-    }*/
 
     public void initBludisko(){
         int pocitadlo= 0;

@@ -24,7 +24,8 @@ public class Reset extends Button{
         p.setSize(200, 500);
         p.setLocation(500, 0);
 
-        p.add(new JLabel("POKUS1"));
+        JLabel pocitadlo= g.getPocitadlo();
+        p.add(pocitadlo);
 
         p.add(new Vpravo(g));
         p.add(new Dole(g));

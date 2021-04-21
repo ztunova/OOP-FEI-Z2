@@ -11,6 +11,8 @@ import java.util.ArrayList;
 @Getter
 public class Grafika extends JPanel {
     Bludisko bludisko;
+    private int pocetPrejdenych;
+    JLabel pocitadlo;
     private Policko start;
     private Policko ciel;
     private Policko aktPoziciaVeze;
@@ -20,6 +22,9 @@ public class Grafika extends JPanel {
         //vykresliBludisko(g);
 
         if(aktPoziciaVeze == ciel){
+            this.pocetPrejdenych ++;
+            this.pocitadlo.setText("Prejdenych: " + pocetPrejdenych);
+
             System.out.println("Ciel");
             g.setColor(Color.WHITE);
             g.fillRect(0,0, 500, 500);
@@ -87,6 +92,13 @@ public class Grafika extends JPanel {
 
     public Grafika(){
         //this.setBackground(Color.WHITE);
+        this.pocetPrejdenych= 0;
+
+        this.pocitadlo= new JLabel();
+        pocitadlo.setText("Prejdenych: " + pocetPrejdenych);
+        pocitadlo.setSize(100, 50);
+        pocitadlo.setLocation(50, 50);
+
         this.bludisko= new Bludisko(14);
         bludisko.generujBludisko();
         this.start= bludisko.getMapa().get(0);
