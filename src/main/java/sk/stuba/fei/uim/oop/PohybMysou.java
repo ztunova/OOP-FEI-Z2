@@ -1,14 +1,22 @@
 package sk.stuba.fei.uim.oop;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
-public class PohybMysou implements MouseListener {
+@Setter
+@Getter
+public class PohybMysou implements MouseListener, MouseMotionListener {
     Grafika g;
     ArrayList<Policko> priamaCestaStlpec;
     ArrayList<Policko> priamaCestaRiadok;
     Policko sused;
+    Policko vybrane;
     int poradieSuseda;
 
     public void zistiCestuStlpec(){
@@ -72,6 +80,52 @@ public class PohybMysou implements MouseListener {
     }
 
     @Override
+    public void mouseDragged(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        Graphics gr= g.getGraphics();
+
+        /*if(g.getVybraneMysou() == null){
+            gr.setColor(Color.WHITE);
+        }*/
+
+        ArrayList<Policko> mapa= g.getBludisko().getMapa();
+        int x= e.getX();
+        int y= e.getY();
+        int riadok= y/30;
+        int stlpec= x/30;
+        int poradie= riadok*14 + stlpec;
+
+        //System.out.println("Tahanie mysou x: "+ x + " y: " +y +" riadok: "+riadok+" stlpec: "+stlpec +" poradie: "+ poradie);
+        Policko akt= mapa.get(poradie);
+
+        if(this.priamaCestaStlpec.contains(akt) || this.priamaCestaRiadok.contains(akt)){
+            if(g.getVybraneMysou() == null){
+                g.setVybraneMysou(akt);
+            }
+           //if(g.getVybraneMysou() != null) {
+               System.out.println("Sem moze");
+               int predR = g.getVybraneMysou().getRiadok();
+               int predS = g.getVybraneMysou().getStlpec();
+               gr.setColor(Color.white);
+               if(g.getVybraneMysou() != g.getAktPoziciaVeze()) {
+                   gr.fillOval(predS * 30 + 10, predR * 30 + 10, 10, 10);
+               }
+               g.setVybraneMysou(akt);
+               //g.repaint();
+
+               gr.setColor(Color.ORANGE);
+               gr.fillOval(stlpec*30+10, riadok*30+10,10, 10);
+          // }
+
+            /*gr.setColor(Color.RED);
+            gr.fillOval(stlpec*30+8, riadok*30+8,10, 10);*/
+        }
+    }
+
+    @Override
     public void mouseClicked(MouseEvent e) {
         ArrayList<Policko> mapa= g.getBludisko().getMapa();
         int x= e.getX();
@@ -82,7 +136,7 @@ public class PohybMysou implements MouseListener {
 
         System.out.println("Klik mysou x: "+ x + " y: " +y +" riadok: "+riadok+" stlpec: "+stlpec +" poradie: "+ poradie);
 
-        Policko vybrane= mapa.get(poradie);
+        this.vybrane= mapa.get(poradie);
 
         if(vybrane == g.getAktPoziciaVeze()){
             System.out.println("Klik na vezu");
@@ -93,15 +147,20 @@ public class PohybMysou implements MouseListener {
         }
         else if(g.isKlikNaVezu()){
             System.out.println("hybanie vezou");
+            //mouseMoved(e);
             if(this.priamaCestaStlpec == null){
                 System.out.println("null");
             }
             if(this.priamaCestaStlpec.contains(vybrane) || this.priamaCestaRiadok.contains(vybrane)) {
                 System.out.println("ma kam");
+               // mouseMoved(e);
                 g.setPredchadzajucaPoziciaVeze(g.getAktPoziciaVeze());
                 g.setAktPoziciaVeze(vybrane);
                 g.setKlikNaVezu(false);
+                g.setVybraneMysou(null);
                 g.repaint();
+                this.priamaCestaStlpec.clear();
+                this.priamaCestaRiadok.clear();
             }
             else{
                 System.out.println("Neprechadza cez steny");
@@ -139,4 +198,5 @@ public class PohybMysou implements MouseListener {
         this.priamaCestaStlpec= new ArrayList<Policko>();
         this.priamaCestaRiadok= new ArrayList<Policko>();
     }
+
 }

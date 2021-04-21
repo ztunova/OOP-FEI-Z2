@@ -14,6 +14,15 @@ public class PohybKlavesnicou implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        g.setVybraneMysou(null);
+        ArrayList<Policko> priamaCesta= g.getPohybMysou().getPriamaCestaRiadok();
+        priamaCesta.clear();
+        g.getPohybMysou().setPriamaCestaRiadok(priamaCesta);
+
+        priamaCesta= g.getPohybMysou().getPriamaCestaStlpec();
+        priamaCesta.clear();
+        g.getPohybMysou().setPriamaCestaStlpec(priamaCesta);
+
         int vstup= e.getKeyCode();
         switch(vstup){
             case KeyEvent.VK_UP: {

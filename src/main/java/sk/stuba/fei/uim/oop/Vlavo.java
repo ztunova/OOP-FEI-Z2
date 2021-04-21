@@ -7,6 +7,8 @@ public class Vlavo extends Button{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        resetujMys();
+
         ArrayList<Policko> mapa= this.g.getBludisko().getMapa();
         Policko aktPoz= g.getAktPoziciaVeze();
         boolean[] hrany= aktPoz.getHrany();

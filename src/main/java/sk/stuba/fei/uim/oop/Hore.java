@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class Hore extends Button{
     @Override
     public void actionPerformed(ActionEvent e) {
+        resetujMys();
+
         int n= this.g.getBludisko().getRozmer();
         ArrayList<Policko> mapa= this.g.getBludisko().getMapa();
         Policko aktPoz= g.getAktPoziciaVeze();

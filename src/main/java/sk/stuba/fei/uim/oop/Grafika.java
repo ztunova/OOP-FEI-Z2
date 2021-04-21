@@ -17,11 +17,20 @@ public class Grafika extends JPanel {
     private Policko ciel;
     private Policko aktPoziciaVeze;
     private Policko predchadzajucaPoziciaVeze;
+    private Policko vybraneMysou;
+    private PohybMysou pohybMysou;
 
     boolean klikNaVezu;
 
     public void paint(Graphics g){
         //vykresliBludisko(g);
+
+        /*if(vybraneMysou != null){
+            int stlpec= aktPoziciaVeze.getStlpec();
+            int riadok= aktPoziciaVeze.getRiadok();
+            g.setColor(Color.RED);
+            g.fillOval(stlpec*30+8, riadok*30+8,10, 10);
+        }*/
 
         if(aktPoziciaVeze == ciel){
             this.pocetPrejdenych ++;
@@ -90,6 +99,7 @@ public class Grafika extends JPanel {
         riadok= aktPoziciaVeze.getRiadok();
         g.setColor(Color.ORANGE);
         g.fillOval(stlpec*30+8, riadok*30+8,25, 25);
+
     }
 
     public Grafika(){
@@ -107,8 +117,12 @@ public class Grafika extends JPanel {
         this.ciel= bludisko.getMapa().get(14*14-1);
         this.aktPoziciaVeze= start;
         this.predchadzajucaPoziciaVeze= aktPoziciaVeze;
+        this.vybraneMysou= null;
 
-        this.addMouseListener(new PohybMysou(this));
+         this.pohybMysou= new PohybMysou(this);
+
+        this.addMouseListener(pohybMysou);
+        this.addMouseMotionListener(pohybMysou);
         this.setFocusable(true);
     }
 
