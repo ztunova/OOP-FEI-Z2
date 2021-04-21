@@ -18,6 +18,8 @@ public class Grafika extends JPanel {
     private Policko aktPoziciaVeze;
     private Policko predchadzajucaPoziciaVeze;
 
+    boolean klikNaVezu;
+
     public void paint(Graphics g){
         //vykresliBludisko(g);
 
@@ -105,6 +107,8 @@ public class Grafika extends JPanel {
         this.ciel= bludisko.getMapa().get(14*14-1);
         this.aktPoziciaVeze= start;
         this.predchadzajucaPoziciaVeze= aktPoziciaVeze;
+
+        this.addMouseListener(new PohybMysou(this));
         this.setFocusable(true);
     }
 
