@@ -6,6 +6,20 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Trieda Policko reprezentuje jednu bunku bludiska. Kazde policko ma ciselne oznacenie riadku a stlpca v ktorom sa
+ * nachadza (ak si bludisko predstavime ako mriezku), kolke v poradi bolo vytvorene (cisluje sa po riadkoch, zhora dole,
+ * zlava do prava) - toto poradie potom reprezentuje index v mape bludiska (ta je ArrayList Policok).
+ * zoznamSusedov obsahuje poradove cisla vsetkych moznych susedov (max 4: horny/dolny/lavy/pravy)
+ * spojenie obsahuje policka s ktorymi je dane policko spojene -> v bludisku medzi nimi nie je hrana, da sa medzi nimi
+ * prechadzat
+ * hrany je pole boolean hodnot (na zaciatku vsetky true), ktore reprezentuje z ktorej strany ma policko hranu -
+ * fixne poradie je [horna, dolna, prava, lava] - podla toho na ktorych poziciach je true, tam ma policko hranu, cez
+ * ktoru sa neda prejst. Kde je false, tam hrana nie je
+ * metoda urciHrany toto pole naplna - prejde zoznamom policok ktore su s danym polickom spojene, identifikuje ci je tento
+ * sused z hornej/dolnej/pravej/ lavej strany a podla toho nastavi hodnotu na false v poli hran
+ */
+
 @Setter
 @Getter
 public class Policko{

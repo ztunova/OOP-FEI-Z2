@@ -6,6 +6,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+/**
+ * Tlacidlo pre resetovanie hry
+ * Trieda dostane ako argument JFrame, na ktorom je cela hra. Vymaze z neho vsetky komponenty, nanovo vygeneruje bludisko
+ * aj ostatne komponenty vytvori nove a pouklada ich naspat na JFrame.
+ */
+
 public class Reset extends MojeTlacidlo {
     JFrame okno;
 
@@ -18,7 +24,7 @@ public class Reset extends MojeTlacidlo {
         okno.addKeyListener(new PohybKlavesnicou(this.g));
 
         JPanel p= new JPanel();
-        p.setBackground(Color.cyan);
+        p.setBackground(Color.WHITE);
         p.setLayout(null);
         p.setSize(300, 500);
         p.setLocation(500, 0);

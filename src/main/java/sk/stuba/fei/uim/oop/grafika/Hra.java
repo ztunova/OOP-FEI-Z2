@@ -6,6 +6,10 @@ import sk.stuba.fei.uim.oop.ovladaciePrvky.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * trieda ktora obsahuje JFrame na ktory sa zobrazia ostatne komponenty, cim sa vytvori cela hra
+ */
+
 public class Hra {
     private JFrame okno;
     private JLabel pocitadlo;
@@ -24,7 +28,7 @@ public class Hra {
         okno.addKeyListener(new PohybKlavesnicou(this.g));
 
         JPanel p= new JPanel();
-        p.setBackground(Color.cyan);
+        p.setBackground(Color.WHITE);
         p.setLayout(null);
         p.setSize(300, 500);
         p.setLocation(500, 0);

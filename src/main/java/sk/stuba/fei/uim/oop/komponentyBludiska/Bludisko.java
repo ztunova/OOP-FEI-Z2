@@ -5,6 +5,21 @@ import lombok.Setter;
 
 import java.util.*;
 
+/**
+ * rozmer = pocet policok na dlzku a sirku => celkova velkost bludiska = rozmer*rozmer
+ * mapa = reprezentuje zoznam vsetkych policok v bludisku v takom poradi v akom boli vytvorene - cislovane su z lava do prava
+ * a zhora dole
+ * initBludisko vytvara tento zoznam vsetkych policok a inicializuje im dane atributy (poradove cislo, riadok a stlpec
+ * v ktorom sa policko nachadza)
+ * vyberSuseda je pomocna funkcia pre funkciu randomDFS - vyberie nahodneho este nenavstiveneho suseda. Pokial zisti,
+ * ze vsetci susedia policka uz boli navstiveny, vrati hodnotu null
+ * randomDFS je metoda na vytvorenie bludiska pomocou nahodneho prehladavania do hlbky - navstivene policka uklada do stacku,
+ * vyberie nahodneho nenavstiveneho suseda z ktoreho pokracuje prehladavanim, pricom danym polickam zaroven zapisuje
+ * spojenia s vybranym susedom. Pokial policko uz nema nenavstiveneho suseda, vybera zo stacku, kym nenajde take, ktore
+ * este ma nenavstiveneho suseda
+ * metoda generujBludisko vola vsetky tieto funkcie na vytvorenie bludiska
+ */
+
 @Setter
 @Getter
 public class Bludisko {

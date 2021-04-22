@@ -6,6 +6,10 @@ import sk.stuba.fei.uim.oop.komponentyBludiska.Policko;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
+/**
+ * pohyb pomocou tlacidla smerom nadol
+ */
+
 public class Dole extends MojeTlacidlo {
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -11,6 +11,23 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
+/**
+ * Trieda, ktora implementuje pohyb pomocou mysi.
+ * Metody zistiCestuStlpec a zistiCestuRiadok su pomocne, urcia priamu cestu v horizontalnom a zvislom smere - v atributoch
+ * priamaCestaStlpec a priamaCestaRiadok ulozia policka, na ktore sa veza moze zo svojej aktualnej pozicie posunut.
+ * mouseClicked identifikuje policko na ktore bolo kliknue. Ak je to policko s vezou, zapamata si to v atribute. Nasledne
+ * ked sa znovu klikne, podla tohoto atributu vie, ze sa moze hybat vezou (a nebolo to len nahodne kliknutie do plochy).
+ * Ked je teda veza zakliknuta a metoda zisti dalsie kliknutie, skontroluje ci policko, na ktore sa teraz kliklo ci je
+ * medzi polickami na ktore sa veza moze posunut (priamaCestaStlpec/Riadok). Ak ano, urci novu poziciu veze, oznaci
+ * vezu za "odkliknutu" a prekresli plochu.
+ * MouseMoved zvyraznuje policka nad ktorymi sa prechadza mysou a veza sa na ne moze posunut. Urci policko nad ktorym
+ * sa kurzor zrovna nachadza, skontroluje, ci je to jedno z tych na ktore sa veza moze posunut a ak ano, zvyrazni ho
+ * vykreslenim mensieho oranzoveho kruzku. V atribute vybraneMysou sa uklada policko nad ktorym sa nachadza kurzor.
+ * Najskor je to policko, nad ktorym bol kurzor predtym (nez sa presunul tam kde je aktualne). Toto predchadzajuce
+ * policko musi metoda prekreslit aby neostavalo zvyraznene - oranzovy kruzok prekresli bielym, v atribute ulozi
+ * aktualne policko a to zvyrazni mensim oranzovym kruzkom.
+ */
+
 @Setter
 @Getter
 public class PohybMysou implements MouseListener, MouseMotionListener {

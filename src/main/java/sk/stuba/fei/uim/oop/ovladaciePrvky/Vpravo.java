@@ -6,6 +6,10 @@ import sk.stuba.fei.uim.oop.komponentyBludiska.Policko;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
+/**
+ * pohyb pomocou tlacidla smerom vpravo
+ */
+
 public class Vpravo extends MojeTlacidlo {
     @Override
     public void actionPerformed(ActionEvent e) {

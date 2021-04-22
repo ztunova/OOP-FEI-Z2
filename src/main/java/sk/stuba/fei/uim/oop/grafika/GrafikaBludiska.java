@@ -10,6 +10,23 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Tato trieda sluzi na vykreslovanie bludiska - obsahuje samotne bludisko, Policko start a ciel, ktore reprezentuju
+ * vychodzi a koncovy bod a su zvolene fixne - start je v lavom hornom rohu, ciel v pravom dolnom.
+ * Policko aktualnaPoziciaVeze je policko, na ktorom je vykreslena veza - reprezentovana oranzovym kruhom
+ * PredchadzajucePolickoVeze je policko z ktoreho veza posledne odisla, po presunuti veze musi byt prekreslene aby
+ * tam neostal oranzovy kruh
+ * metoda vykresliBludisko je pomocna, najskor prejde polom hran jednotlivych policok, tam kde sa nachadza true, vykresli
+ * ciaru (hranu) + vykresli farebne odlisene startovacie policko, cielove a vezu.
+ * Metoda paint potom vola metodu vykresliBludisko, pricom ak sa veza nachadza na cielovom policku, vygeneruje nove bludisko
+ * ktore aj vykresli namiesto povodneho. K tomu este aktualizuje pocitadlo prejdenych bludisk.
+ * Metoda resetujMys vynuluje vsetky parametre ktore su pomocne pre pohyb s mysou. Tuto metodu volaju tlacitka a
+ * pohyb pomocou klavesnice. Podla toho ako mam implementovanu mys, keby niekto klikol na vezu ale nakoniec sa pohol
+ * tlacitkami alebo klavesnicou, ostala by v mysi ulozena cesta po ktorej sa mohla veza hybat (mysou). Lenze tato cesta by
+ * uz nebola aktualna, retoze veza by sa nachadzala uz niekde inde, co by jej umoznovalo "teleportovat sa" na miesto
+ * kde bola zakliknuta, pricom by presla aj cez hrany, preto tieto argumenty treba resetovat.
+ */
+
 @Setter
 @Getter
 public class GrafikaBludiska extends JPanel {

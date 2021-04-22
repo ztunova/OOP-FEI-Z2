@@ -7,6 +7,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
+/**
+ * Trieda ktora sluzi na pohyb pomocou klavesnice
+ * Ked je stlaceny klaves, identifikuje sa, ktory bol stlaceny a podla toho sa rovnakym sposobom ako pri pohybe
+ * pomocou tlacitiek urci nova pozicia veze (vid komentar v MojeTlacitko) a cele bludisko sa prekresli
+ */
+
 public class PohybKlavesnicou implements KeyListener {
     private GrafikaBludiska g;
 
