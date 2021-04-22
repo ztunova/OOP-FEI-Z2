@@ -1,57 +1,43 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.grafika;
+
+import sk.stuba.fei.uim.oop.grafika.GrafikaBludiska;
+import sk.stuba.fei.uim.oop.ovladaciePrvky.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class Hra /*implements ActionListener */{
-    int vyrisenychBludisk;
-    int klikov;
-
-    JFrame okno;
-    JButton vpravo;
-    JPanel pokus;
-    JLabel pocitadlo;
-
-    Grafika g;
-    Bludisko bludisko;
-    Pokus2 pokus2;
+public class Hra {
+    private JFrame okno;
+    private JLabel pocitadlo;
+    private GrafikaBludiska g;
 
     public Hra(){
         this.okno = new JFrame();
         okno.setLayout(null);
-        okno.setSize(700, 500);
+        okno.setSize(800, 500);
         okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         okno.setFocusable(true);
 
-        this.g= new Grafika();
-        g.setLayout(null);
-        g.setSize(500, 500);
+        this.g= new GrafikaBludiska();
         okno.add(g);
-        g.setFocusable(true);
 
         okno.addKeyListener(new PohybKlavesnicou(this.g));
 
         JPanel p= new JPanel();
         p.setBackground(Color.cyan);
         p.setLayout(null);
-        p.setSize(200, 500);
+        p.setSize(300, 500);
         p.setLocation(500, 0);
 
         this.pocitadlo= g.getPocitadlo();
         p.add(pocitadlo);
 
-        this.vpravo= new Vpravo(g);
-        p.add(vpravo);
+        p.add(new Vpravo(g));
         p.add(new Dole(g));
         p.add(new Vlavo(g));
         p.add(new Hore(g));
         p.add(new Reset(g, okno));
 
-        //p.add(pokus2);
         okno.add(p);
 
         okno.setVisible(true);

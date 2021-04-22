@@ -1,10 +1,8 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.komponentyBludiska;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -15,8 +13,8 @@ public class Policko{
     private int riadok;
     private int stlpec;
     private boolean[] hrany;
-    ArrayList<Policko> spojenie;
-    ArrayList<Integer> zoznamSusedov;
+    private ArrayList<Policko> spojenie;
+    private ArrayList<Integer> zoznamSusedov;
 
     public void urciHrany(){
         for(Policko sused : this.spojenie){

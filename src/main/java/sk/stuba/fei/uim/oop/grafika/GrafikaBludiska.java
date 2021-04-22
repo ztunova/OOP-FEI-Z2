@@ -1,7 +1,10 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.grafika;
 
 import lombok.Getter;
 import lombok.Setter;
+import sk.stuba.fei.uim.oop.komponentyBludiska.Bludisko;
+import sk.stuba.fei.uim.oop.komponentyBludiska.Policko;
+import sk.stuba.fei.uim.oop.ovladaciePrvky.PohybMysou;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,41 +12,34 @@ import java.util.ArrayList;
 
 @Setter
 @Getter
-public class Grafika extends JPanel {
-    Bludisko bludisko;
-    private int pocetPrejdenych;
-    JLabel pocitadlo;
+public class GrafikaBludiska extends JPanel {
+    private Bludisko bludisko;
     private Policko start;
     private Policko ciel;
     private Policko aktPoziciaVeze;
     private Policko predchadzajucaPoziciaVeze;
     private Policko vybraneMysou;
+
+    private boolean klikNaVezu;
+    private int pocetPrejdenych;
+    private JLabel pocitadlo;
     private PohybMysou pohybMysou;
 
-    boolean klikNaVezu;
 
     public void paint(Graphics g){
-        //vykresliBludisko(g);
-
-        /*if(vybraneMysou != null){
-            int stlpec= aktPoziciaVeze.getStlpec();
-            int riadok= aktPoziciaVeze.getRiadok();
-            g.setColor(Color.RED);
-            g.fillOval(stlpec*30+8, riadok*30+8,10, 10);
-        }*/
-
         if(aktPoziciaVeze == ciel){
             this.pocetPrejdenych ++;
-            this.pocitadlo.setText("Prejdenych: " + pocetPrejdenych);
+            pocitadlo.setText("Pocet vyriesenych bludisk: " + pocetPrejdenych);
 
-            System.out.println("Ciel");
             g.setColor(Color.WHITE);
             g.fillRect(0,0, 500, 500);
+
             this.bludisko= null;
             this.bludisko= new Bludisko(14);
-            bludisko.generujBludisko();
+
             this.start= bludisko.getMapa().get(0);
-            this.ciel= bludisko.getMapa().get(14*14-1);
+            int n= this.bludisko.getRozmer();
+            this.ciel= bludisko.getMapa().get(n*n-1);
             this.aktPoziciaVeze= start;
             this.predchadzajucaPoziciaVeze= aktPoziciaVeze;
 
@@ -102,24 +98,39 @@ public class Grafika extends JPanel {
 
     }
 
-    public Grafika(){
-        //this.setBackground(Color.WHITE);
+    public void resetujMys(){
+        this.setVybraneMysou(null);
+        ArrayList<Policko> priamaCesta= this.getPohybMysou().getPriamaCestaRiadok();
+        priamaCesta.clear();
+        this.getPohybMysou().setPriamaCestaRiadok(priamaCesta);
+
+        priamaCesta= this.getPohybMysou().getPriamaCestaStlpec();
+        priamaCesta.clear();
+        this.getPohybMysou().setPriamaCestaStlpec(priamaCesta);
+    }
+
+    public GrafikaBludiska(){
+        this.setLayout(null);
+        this.setSize(500, 500);
+
         this.pocetPrejdenych= 0;
 
         this.pocitadlo= new JLabel();
-        pocitadlo.setText("Prejdenych: " + pocetPrejdenych);
-        pocitadlo.setSize(100, 50);
-        pocitadlo.setLocation(50, 50);
+        pocitadlo.setText("Pocet vyriesenych bludisk: " + pocetPrejdenych);
+        pocitadlo.setSize(200, 50);
+        pocitadlo.setLocation(0, 50);
 
         this.bludisko= new Bludisko(14);
-        bludisko.generujBludisko();
+
         this.start= bludisko.getMapa().get(0);
-        this.ciel= bludisko.getMapa().get(14*14-1);
+        int n= this.bludisko.getRozmer();
+        this.ciel= bludisko.getMapa().get(n*n-1);
+
         this.aktPoziciaVeze= start;
         this.predchadzajucaPoziciaVeze= aktPoziciaVeze;
         this.vybraneMysou= null;
 
-         this.pohybMysou= new PohybMysou(this);
+        this.pohybMysou= new PohybMysou(this);
 
         this.addMouseListener(pohybMysou);
         this.addMouseMotionListener(pohybMysou);

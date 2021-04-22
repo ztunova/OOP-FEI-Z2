@@ -1,30 +1,24 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.komponentyBludiska;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.*;
 
 @Setter
 @Getter
 public class Bludisko {
     private int rozmer;
-    public ArrayList<Policko> mapa;
-    private Policko start;
-    private Policko ciel;
+    private ArrayList<Policko> mapa;
 
-    public void initBludisko(){
+    private void initBludisko(){
         int pocitadlo= 0;
-        //ArrayList<Policko> mapa= new ArrayList<Policko>(rozmer*rozmer);
         ArrayList<Integer> susedia= new ArrayList<Integer>();
 
         for (int riadok= 0; riadok< rozmer; riadok++){
             for (int stlpec= 0; stlpec< rozmer; stlpec++){
                 susedia.clear();
                 Policko novePolicko= new Policko(pocitadlo, riadok, stlpec);
-                //pocitadlo++;
                 this.mapa.add(novePolicko);
 
                 if(riadok == 0){
@@ -82,7 +76,7 @@ public class Bludisko {
         }
     }
 
-    public Policko vyberSuseda(ArrayList<Integer> vsetciSusedia, Random rand, boolean[] navstivene){
+    private Policko vyberSuseda(ArrayList<Integer> vsetciSusedia, Random rand, boolean[] navstivene){
         int pocetVsetkychSusedov= vsetciSusedia.size();
         int vybraneID;
         ArrayList<Integer> skusane= new ArrayList<Integer>();
@@ -104,7 +98,7 @@ public class Bludisko {
         }
     }
 
-    public void randomDFS(){
+    private void randomDFS(){
         Random rand= new Random();
         int index;
         Policko nahodnySused;
@@ -136,23 +130,19 @@ public class Bludisko {
         }
     }
 
-    public void generujBludisko(){
+    private void generujBludisko(){
         initBludisko();
         randomDFS();
         for (Policko policko : this.mapa){
-            //System.out.println(policko.getPoradie());
             policko.urciHrany();
         }
-        this.start= mapa.get(0);
-        Random r= new Random();
-        //nahodne policko v druhej polovici bludiska
-        int indexCiel= r.nextInt(14*14-(14*14)/2)+(14*14)/2;
-        this.ciel= mapa.get(indexCiel);
     }
 
     public Bludisko(int n){
         this.rozmer= n;
         this.mapa= new ArrayList<Policko>();
+
+        generujBludisko();
     }
 
     public Bludisko(){

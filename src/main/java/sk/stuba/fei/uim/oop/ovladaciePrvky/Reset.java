@@ -1,27 +1,26 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.ovladaciePrvky;
+
+import sk.stuba.fei.uim.oop.grafika.GrafikaBludiska;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class Reset extends Button{
+public class Reset extends MojeTlacidlo {
     JFrame okno;
 
     @Override
     public void actionPerformed(ActionEvent e) {
         okno.getContentPane().removeAll();
 
-        g= new Grafika();
-        g.setLayout(null);
-        g.setSize(500, 500);
-        okno.setFocusable(true);
+        g= new GrafikaBludiska();
 
         okno.addKeyListener(new PohybKlavesnicou(this.g));
 
         JPanel p= new JPanel();
         p.setBackground(Color.cyan);
         p.setLayout(null);
-        p.setSize(200, 500);
+        p.setSize(300, 500);
         p.setLocation(500, 0);
 
         JLabel pocitadlo= g.getPocitadlo();
@@ -39,14 +38,15 @@ public class Reset extends Button{
         okno.repaint();
     }
 
-    public Reset(Grafika gr, JFrame f){
-       // this.p= p;
+    public Reset(GrafikaBludiska gr, JFrame f){
         this.okno= f;
         this.g= gr;
         this.setSize(70, 30);
-        this.setLocation(50, 100);
+        this.setLocation(0, 100);
         this.setText("Reset");
         this.addActionListener(this);
         this.setFocusable(false);
     }
+
+    public Reset(){}
 }
